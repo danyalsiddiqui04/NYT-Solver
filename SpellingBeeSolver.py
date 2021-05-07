@@ -8,7 +8,6 @@ from collections import OrderedDict
 
 # file that contains ~450,000 English words
 words = open('words.txt')
-
 # asks for the hexagon letters and puts in list
 letters = list(input('Input all the letters in the hexagon, CENTER LETTER FIRST: '))
 # this is the center letter
@@ -16,6 +15,8 @@ center = letters[0]
 # center letter is removed from list and list is sorted
 letters.sort()
 letters.remove(center)
+# this is where all the words will be stored in case the user wants to save
+all_words = []
 
 # parses each word in the file
 for word in words:
@@ -39,5 +40,13 @@ for word in words:
 			# if the word contains only correct letters, then print it
 			if go == True:
 				print(word)
+				all_words.append(word)
 
-input('Press enter to quit')
+# asks the user if they want to end or save
+end = input('Press enter to quit or type "save" to save to a file: ')
+if end == 'save':
+	# create file if does not already exist
+	answers = open('answers.txt', 'w')
+	for i in all_words:
+		answers.write(i)
+	print('Your words have been stored in the "answers" file!')
