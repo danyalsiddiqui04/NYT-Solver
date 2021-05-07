@@ -39,3 +39,5 @@ for word in words:
 			# if the word contains only correct letters, then print it
 			if go == True:
 				print(word)
+
+input('Press enter to quit')
